@@ -47,10 +47,12 @@ var randomNum = generateRandomNumber(0, 1);
 
 //Execution code/tag
 if (document.cookie.indexOf(experiment_id + "-" + control) > 0){
-	variationTrack(assignedVariation);
+	if(!assignedVariation){assignedVariation = experiment_id + "-" + control}
+	variationTrack(assignedVariation)
 	controlExecution();
 }
-else if (document.cookie.indexOf(experiment_id + "-" + variant1) > 0){
+if (document.cookie.indexOf(experiment_id + "-" + variant1) > 0){
+	if(!assignedVariation){assignedVariation = experiment_id + "-" + variant1}
 	variationTrack(assignedVariation);
 	variation1Execution();
 }
